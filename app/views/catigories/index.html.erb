@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Catigories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @catigories.each do |catigory| %>
+      <tr>
+        <td><%= catigory.name %></td>
+        <td><%= catigory.description %></td>
+        <td><%= link_to 'Show', catigory %></td>
+        <td><%= link_to 'Edit', edit_catigory_path(catigory) %></td>
+        <td><%= link_to 'Destroy', catigory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Catigory', new_catigory_path %>
