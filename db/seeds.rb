@@ -25,6 +25,8 @@ catigories = [
     products: ['Apple Watch Series 5', 'Apple Watch Nike']
   }]
 
+colors = ['Red', 'White', 'Black', 'Green', 'Blue']
+
 
 def create_catigory(catigories)
   catigories.each do |c|
@@ -33,10 +35,25 @@ def create_catigory(catigories)
   end
 end
 
-def create_catigory_product(c, product)
-  product.each do |product|
-    Product.create!(catigory_id: c.id, name: product)
+def create_colors(colors)
+  colors.each do |c|
+    Color.create!(name: c)
+    puts "Color #{c} created"
   end
 end
 
+def create_catigory_product(c, product)
+  product.each do |product|
+
+    colors = Color.all
+
+    color = colors.sample
+
+    color_id = color.id
+
+    Product.create!(catigory_id: c.id, name: product, color_id: color_id)
+  end
+end
+
+create_colors(colors)
 create_catigory(catigories)
